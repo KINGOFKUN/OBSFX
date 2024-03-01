@@ -165,7 +165,8 @@ jobs:
     - name: "Package: Install Inno Setup"
       shell: cmd
       run: |
-        curl "-kL" "https://cdn.xaymar.com/ci/innosetup-6.2.1.exe" "-f" "--retry" "5" "-o" "inno.exe" .\inno.exe /VERYSILENT /SP- /SUPPRESSMSGBOXES /NORESTART
+        curl "-kL" "https://cdn.xaymar.com/ci/innosetup-6.2.1.exe" "-f" "--retry" "5" "-o" "inno.exe"
+        .\inno.exe /VERYSILENT /SP- /SUPPRESSMSGBOXES /NORESTART
     - name: "Package"
       shell: cmd
       run: |
@@ -484,7 +485,7 @@ jobs:
       shell: bash
       run: |
         mkdir "${{ github.workspace }}/build/package"
-        cmake --build "${{ github.workspace }}/build/ci" --config Release --target PACKAGE
+        cmake --build "${{ github.workspace }}/build/ci" --config Release --target PACKAGE_7Z
     - name: "Artifacts"
       uses: actions/upload-artifact@v3
       with:
